@@ -10,3 +10,17 @@ Goal: to implement a parser and type-checker for the ToY language. Using tools f
 - String literals: a sequence of zero or more characters, surrounded by double quotation marks. ToY does not support escaped characters like "Hello \"world\"!".
 - Symbols: ```{```, ```}```, ```;```, ```<```, ```>```, ```==```, ```<-```, ```>-```, ```!=```, ```!```, ```(```, ```)```, ```+```, ```-```, ```.```, ```=```.
 - Comments: Done using ```//``` or ```##```
+
+## Types
+
+- Basic data types ```int```, ```bool```, ```string```.
+- ```<type> ::= int | bool | string```
+- Procedures can also return void or one of the above
+- ```<return-type> ::= <type> | void```
+- Can also defines record types (structs) with the syntax
+- ```<struct> ::= struct <id> {<declaration>,<declaration>,... }
+- Note that a struct has at least one declaration in it and that they are comma-seperated. Declarations are given by the grammar: ```<declaration> ::= <type> <id>```
+
+## Procedures
+
+```<proc> ::= <return-type> <id> (<declaration>,...) {<statement>}```
