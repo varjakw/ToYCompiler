@@ -23,3 +23,27 @@ Goal: to implement a parser and type-checker for the ToY language. Using tools f
 
 ## Notes
 - See spec.pdf for further details on statements, expressions and program structure.
+
+# Part 1
+Lexical Analyser/Scanner for the ToY language. Returns ```VALID``` or ```ERROR```.
+
+- Input is characters from source programs
+- Output is sequence of tokens
+
+The lex analyser divides the program into tokens. A token is a sequence of characters that can be treated as a unit in the grammar of the language.
+
+Examples:
+- Type (id, number, real,...)
+- Punctuation tokens (If, void, return,...)
+- Alphabetic tokens (keywords)
+
+- Keywords include for, while, if, etc
+- Identifiers include variable names, function names, etc
+- Operators include +, -, etc
+- Seperators like ',' and ';'
+
+## How Lexical Analysis Works
+- Tokenization: dividing the program into valid tokens
+- Remove white space
+- Remove comments
+- Identifies error using the grammar of the given languages.
