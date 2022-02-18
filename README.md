@@ -8,7 +8,7 @@ Goal: to implement a parser and type-checker for the ToY language. Using tools f
 - Identifier ```<id>```: a (case-sensitive )sequence of one or more letters/digits/underscores, starting with a letter or underscore and cannot be a reserved word.
 - Integer literals: a 16 bit sequence of one or more digits (from -32768 to 32767), potentially starting with minus symbol. ToY does not have float numbers.
 - String literals: a sequence of zero or more characters, surrounded by double quotation marks. ToY does not support escaped characters like "Hello \"world\"!".
-- Symbols: ```{```, ```}```, ```;```, ```<```, ```>```, ```==```, ```<-```, ```>-```, ```!=```, ```!```, ```(```, ```)```, ```+```, ```-```, ```.```, ```=```.
+- Symbols: ```{```, ```}```, ```;```, ```<```, ```>```, ```==```, ```<-```, ```>-```, ```!=```, ```!```, ```(```, ```)```, ```+```, ```-```, ```.```, ```=```,  ```*```,  ```/```,  ```mod```,  ```and```,  ```or```,  ```not```, ```>```,  ```<```,  ```>=```,  ```<=```. 
 - Comments: Done using ```//``` or ```##```
 
 ## Types
@@ -21,6 +21,5 @@ Goal: to implement a parser and type-checker for the ToY language. Using tools f
 - ```<struct> ::= struct <id> {<declaration>,<declaration>,... }
 - Note that a struct has at least one declaration in it and that they are comma-seperated. Declarations are given by the grammar: ```<declaration> ::= <type> <id>```
 
-## Procedures
-
-```<proc> ::= <return-type> <id> (<declaration>,...) {<statement>}```
+## Notes
+- See spec.pdf for further details on statements, expressions and program structure.
