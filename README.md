@@ -18,7 +18,7 @@ Goal: to implement a parser and type-checker for the ToY language. Using tools f
 - Procedures can also return void or one of the above
 - ```<return-type> ::= <type> | void```
 - Can also defines record types (structs) with the syntax
-- ```<struct> ::= struct <id> {<declaration>,<declaration>,... }
+- ```<struct> ::= struct <id> {<declaration>,<declaration>,... }```
 - Note that a struct has at least one declaration in it and that they are comma-seperated. Declarations are given by the grammar: ```<declaration> ::= <type> <id>```
 
 ## Notes
@@ -36,9 +36,10 @@ Examples:
 - Type (id, number, real,...)
 - Punctuation tokens (If, void, return,...)
 - Alphabetic tokens (keywords)
-
+  
+    
+    
 - Keywords include for, while, if, etc 
-- - else = 'e' 'l' 's' 'e'
 - Identifiers include variable names, function names, etc
 - Operators include +, -, etc
 - Seperators like ',' and ';'
@@ -48,3 +49,19 @@ Examples:
 - Remove white space
 - Remove comments
 - Identifies error using the grammar of the given languages.
+
+### Examples
+- Keywords
+  - ```else = 'e' 'l' 's' 'e'```
+  - Set of Keywords: ```'else' + 'if' + 'int' + ...```
+- Integers
+  - digit: ```'0' | '1' | ... | '9'```
+  - integers: ```digit digit* (or digit+) ```
+  - hexadecimal (starts with 0x or 0X): ```'0' | ('x' | 'X')hexdigit+``` where ```hexdigit = digit|'a'|'b'|'c'|'d'|'e'|'f'|'A'...|'F'```
+- Identifier
+  - letter: ```'a' | ... | 'z' | 'A' | ... | 'Z'```
+  - identifiers: ```letter (letter|digit)*```
+- Single-line comments
+  - //this is a comment
+  - ```('/' | '#')('/' | '#') not(\n)* (\n|epsilon)```
+  - 
