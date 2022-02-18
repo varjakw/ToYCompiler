@@ -37,7 +37,8 @@ Examples:
 - Punctuation tokens (If, void, return,...)
 - Alphabetic tokens (keywords)
 
-- Keywords include for, while, if, etc
+- Keywords include for, while, if, etc 
+- - else = 'e' 'l' 's' 'e'
 - Identifiers include variable names, function names, etc
 - Operators include +, -, etc
 - Seperators like ',' and ';'
