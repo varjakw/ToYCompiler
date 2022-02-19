@@ -17,7 +17,10 @@ UNARY_OPERATOR = "++"|"--"
 
 [ \t\n]+ {\\ignore whitespace}
 
-{COMMENTS} {\\ignore}
+{"//".*\n} {\\ignore single line comments}
+
+{"##".*\n} {\\ignore single line comments}
+
 
 . {
 throw new Error("ERROR");
