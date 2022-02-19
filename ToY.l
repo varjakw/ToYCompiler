@@ -1,6 +1,6 @@
 import TokenType;
 %%
-Whitespace = [\t\n]+
+WHITESPACE = [\t\n]+
 DIGIT = [0-9]
 INTEGER {DIGIT}+
 LETTER = [a-zA-Z]
@@ -14,15 +14,13 @@ UNARY_OPERATOR = "++"|"--"
 
 
 %%
-(a|b)*abb {System.out.printf("*** found match [%s] at line %d, column %d\n", yytext(), yyline, yycolumn);
-}
 
-{Whitespace} {System.out.print("We got whitespace yo")}
+[ \t\n]+ {\\ignore whitespace}
 
-
+{COMMENTS} {\\ignore}
 
 . {
-throw new Error("anna oop, ERROR");
+throw new Error("ERROR");
 }
 
 %%
