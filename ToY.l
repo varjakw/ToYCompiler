@@ -1,9 +1,11 @@
 import TokenType;
 %%
+
 WHITESPACE = [\t\n]+
 DIGIT = [0-9]
 INTEGER {DIGIT}+
 LETTER = [a-zA-Z]
+STRING = {LETTER}*
 BRACK = "(" | ")"
 CURLY_BRACK = "{" | "}"
 Bool = "True" | "False"
@@ -20,7 +22,6 @@ UNARY_OPERATOR = "++"|"--"
 {"//".*\n} {\\ignore single line comments}
 
 {"##".*\n} {\\ignore single line comments}
-
 
 . {
 throw new Error("ERROR");
