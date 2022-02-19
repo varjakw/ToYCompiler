@@ -1,2 +1,0 @@
-Whitespace = [\t\n]+
-Letter = [a-zA-Z]
