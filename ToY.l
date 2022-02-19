@@ -6,3 +6,7 @@ Letter = [a-zA-Z]
 }
 
 {Whitespace} {System.out.print("We got whitespace yo")}
+
+. {
+throw new Error("anna oop, ERROR");
+}
