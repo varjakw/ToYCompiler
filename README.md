@@ -65,3 +65,10 @@ Examples:
   - //this is a comment
   - ```('/' | '#')('/' | '#') not(\n)* (\n|epsilon)```
 
+We are representing the tokens using regular expressions.
+
+# Code Stuff
+Lex file format:  
+
+![image](https://user-images.githubusercontent.com/78870995/154807461-6827cf04-2408-4ef1-a1d4-d69db358b563.png)
+
