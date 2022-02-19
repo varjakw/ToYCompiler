@@ -70,7 +70,8 @@ We are representing the tokens using regular expressions.
 # Code Stuff
 Lex file format:  
 
-![image](https://user-images.githubusercontent.com/78870995/154807461-6827cf04-2408-4ef1-a1d4-d69db358b563.png)
+![image](https://user-images.githubusercontent.com/78870995/154810655-ac4e6935-7b3c-46f5-b828-95ba73439016.png)
+
 
 Running lexer & parser together
 
