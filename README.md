@@ -65,3 +65,4 @@ Examples:
   - //this is a comment
   - ```('/' | '#')('/' | '#') not(\n)* (\n|epsilon)```
 
+We are representing the tokens using regular expressions.
