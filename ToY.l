@@ -16,6 +16,14 @@ LOGICAL_OPERATOR = "&&" | "||" | "!" | "!="
 RELATIONAL_OPERATOR = "<"|">"|"<="|">="|"=="
 UNARY_OPERATOR = "++"|"--"
 
+// Tell JLex to have yylex() return a Token
+%type Token
+// Tell JLex to name the generate class Lexer
+%class Lexer
+// Tell JLex what to return when eof of file is hit
+%eofval {
+return new Token(null); %
+eofval }
 
 %%
 
