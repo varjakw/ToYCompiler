@@ -72,5 +72,10 @@ Lex file format:
 
 ![image](https://user-images.githubusercontent.com/78870995/154807461-6827cf04-2408-4ef1-a1d4-d69db358b563.png)
 
+Running lexer & parser together
+
+![image](https://user-images.githubusercontent.com/78870995/154808126-9fa816d0-f9e3-4d93-ab31-5fba07edf864.png)
+
+
 
 
