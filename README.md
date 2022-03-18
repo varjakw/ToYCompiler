@@ -79,6 +79,10 @@ A context-free grammar (CFG) consisting of a finite set of grammar rules is a qu
 -P is a set of rules, P: N → (N ∪ T)\*, the left-hand side of the production rule P does have any right context or left context.
 -S is the start symbol.
 
+### Production rules
+![image](https://user-images.githubusercontent.com/78870995/159086370-37d3fa33-13d1-47c1-9273-4c46fdf2e248.png)
+
+
 ## Derivation 
 Derivation is a sequence of production rules. It is used to get the input string through these production rules. 
 
