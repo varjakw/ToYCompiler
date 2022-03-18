@@ -24,7 +24,7 @@ Goal: to implement a parser and type-checker for the ToY language. Using tools f
 ## Notes
 - See spec.pdf for further details on statements, expressions and program structure.
 
-# Part 1
+# Part 1 - Flex
 Lexical Analyser/Scanner for the ToY language. Returns ```VALID``` or ```ERROR```.
 
 - Input is characters from source programs
@@ -66,6 +66,35 @@ Examples:
   - ```('/' | '#')('/' | '#') not(\n)* (\n|epsilon)```
 
 We are representing the tokens using regular expressions.
+
+# Part 2 - Parser - Bison
+
+We deal with Context-Free Grammer (CFG) here in order to output an Abstract Syntax Tree (AST).
+
+## Context-Free Grammar
+A context-free grammar (CFG) consisting of a finite set of grammar rules is a quadruple (N, T, P, S) where
+
+-N is a set of non-terminal symbols.
+-T is a set of terminals where N ∩ T = NULL.
+-P is a set of rules, P: N → (N ∪ T)\*, the left-hand side of the production rule P does have any right context or left context.
+-S is the start symbol.
+
+## Derivation 
+Derivation is a sequence of production rules. It is used to get the input string through these production rules. 
+
+To parse, we have to make two decisions:
+-We have to decide the non-terminal which is to be replaced.
+-We have to decide the production rule by which the non-terminal will be replaced.
+
+## Parse Tree
+A parse tree is the graphical representation of a symbol. The root of the parse tree is the start node from which we derive the string.
+
+Note:
+-All leaf nodes have to be terminals.
+-All interior nodes have to be non-terminals.
+
+## Amiguity
+A grammar is ambiguous if there exists more than one leftmost derivation or more than one rightmost derivative or more than one parse tree for the given input string.
 
 # Code Stuff
 Lex file format:  
