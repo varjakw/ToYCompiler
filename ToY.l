@@ -3,21 +3,9 @@ import TokenType;
 
 WHITESPACE          = [\t\n]+
 DIGIT               = [0-9]
-INTEGER               {DIGIT}+
+INTEGER             = {DIGIT}+
 LETTER              = [a-zA-Z]
 STRING              = {LETTER}*
-LEFT_BRACK          = "("
-RIGHT_BRACK         = ")"
-LEFT_CURLY_BRACK    = "{"
-RIGHT_CURLY_BRACK   = "}"
-BOOL                = "True" | "False"
-ARITH_OPERATOR      = "+" | "-" | "/" | "%" | "*"
-LOGICAL_OPERATOR    = "&&" | "||" | "!" | "!="
-RELATIONAL_OPERATOR = "<"|">"|"<="|">="|"=="
-UNARY_OPERATOR      = "++"|"--"
-KEYWORD             = "bool"|"int"|"true"|"false"|"void"|"printf"|"string"|"struct"|"if"|"then"|"else"|"for"|"return"
-IDENTIFIER          = [(^KEYWORD)|_|LETTER][LETTER|DIGIT|_]*    //TODO: I have a feeling this doesnt work
-INTEGER_LITERAL     = "-"{INTEGER}                              //TODO: Set min/max
 
 // Tell JLex to have yylex() return a Token
 %type Token
@@ -34,20 +22,48 @@ eofval }
 
 {"##".*\n} {\\ignore single line comments}
 
- {KEYWORD}                      { return TokenType.KEYWORD.ordinal(); }
- {STRING}                       { return TokenType.STRING.ordinal(); }
- {IDENTIFIER}                   { return TokenType.IDENTIFIER.ordinal(); }
+
  {INTEGER}                      { return TokenType.INTEGER.ordinal(); }
- {ARITH_OPERATOR}               { return TokenType.OPERATOR.ordinal(); }
- {LOGICAL_OPERATOR}             { return TokenType.OPERATOR.ordinal(); }
- {RELATIONAL_OPERATOR}          { return TokenType.OPERATOR.ordinal(); }
- {UNARY_OPERATOR}               { return TokenType.OPERATOR.ordinal(); }
- {LEFT_BRACK}                   { return TokenType.LEFT_BRACK.ordinal(); }
- {RIGHT_BRACK}                  { return TokenType.RIGHT_BRACK.ordinal(); }
- {LEFT_CURLY_BRACK}             { return TokenType.LEFT_CURLY_BRACK.ordinal(); }
- {RIGHT_CURLY_BRACK}            { return TokenType.RIGHT_CURLY_BRACK.ordinal(); }
  {WHITESPACE}                   { /* Ignore */ }
 
+
+"bool"			{ count(); return(BOOL); }
+"int"			{ count(); return(INT); }
+"true"			{ count(); return(TRUE); }
+"false"			{ count(); return(FALSE); }
+"void"		{ count(); return(VOID); }
+"printf"			{ count(); return(PRINTF); }
+"string"		{ count(); return(STRING); }
+"struct"		{ count(); return(STRUCT); }
+"if"			{ count(); return(IF); }
+"then"		{ count(); return(THEN); }
+"else"			{ count(); return(ELSE); }
+"for"			{ count(); return(FOR); }
+"return"			{ count(); return(RETURN); }
+"mod"			{ count(); return(MOD); }
+"and"		{ count(); return(AND); }
+"or"		{ count(); return(OR); }
+
+("{"|"<%")		{ count(); return(LEFT_CURLY_BRACK); }
+("}"|"%>")		{ count(); return(RIGHT_CURLY_BRACK); }
+";"			{ count(); return(COLON); }
+">"			{ count(); return(RIGHT); }
+"<"			{ count(); return(LEFT); }
+"=="			{ count(); return(EQUAL_DOUBLE); }
+"<-"			{ count(); return(LEFT_ARROW); }
+">-"			{ count(); return(RIGHT_ARROW); }
+"!="			{ count(); return(NOT_EQ); }
+"!"			{ count(); return(NOT); }
+"("			{ count(); return(LEFT_BRACK); }
+")"			{ count(); return(RIGHT_BRACK); }
+"+"			{ count(); return(ADD); }
+"-"			{ count(); return(SUB); }
+"."			{ count(); return(DOT); }
+"="			{ count(); return(EQUAL); }
+"*"			{ count(); return(MUL); }
+"/"			{ count(); return(DIV); }
+"<="			{ count(); return(LT); }
+">="			{ count(); return(GT); }
 
 . {
 throw new Error("ERROR: " + yytext());
