@@ -26,6 +26,12 @@ eofval }
  {INTEGER}                      { return TokenType.INTEGER.ordinal(); }
  {WHITESPACE}                   { /* Ignore */ }
 
+{DIGIT}+{INTEGER}+{LETTER}+		{ count(); return(ID); }
+{DIGIT}+{LETTER}+{INTEGER}+		{ count(); return(ID); }
+{INTEGER}+{LETTER}+{DIGIT}+		{ count(); return(ID); }
+{INTEGER}+{DIGIT}+{LETTER}+		{ count(); return(ID); }
+{LETTER}+{DIGIT}+{INTEGER}+		{ count(); return(ID); }
+{LETTER}+{INTEGER}+{DIGIT}+		{ count(); return(ID); }
 
 "bool"			{ count(); return(BOOL); }
 "int"			{ count(); return(INT); }
