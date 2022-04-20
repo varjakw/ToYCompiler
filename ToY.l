@@ -17,22 +17,6 @@ return new Token(null); %
 eofval }
 
 %%
-
-{"//".*\n} {\\ignore single line comments}
-
-{"##".*\n} {\\ignore single line comments}
-
-
- {INTEGER}                      { return TokenType.INTEGER.ordinal(); }
- {WHITESPACE}                   { /* Ignore */ }
-
-{DIGIT}+{INTEGER}+{LETTER}+		{ count(); return(ID); }
-{DIGIT}+{LETTER}+{INTEGER}+		{ count(); return(ID); }
-{INTEGER}+{LETTER}+{DIGIT}+		{ count(); return(ID); }
-{INTEGER}+{DIGIT}+{LETTER}+		{ count(); return(ID); }
-{LETTER}+{DIGIT}+{INTEGER}+		{ count(); return(ID); }
-{LETTER}+{INTEGER}+{DIGIT}+		{ count(); return(ID); }
-
 "bool"			{ count(); return(BOOL); }
 "int"			{ count(); return(INT); }
 "true"			{ count(); return(TRUE); }
@@ -53,8 +37,8 @@ eofval }
 ("{"|"<%")		{ count(); return(LEFT_CURLY_BRACK); }
 ("}"|"%>")		{ count(); return(RIGHT_CURLY_BRACK); }
 ";"			{ count(); return(COLON); }
-">"			{ count(); return(RIGHT); }
-"<"			{ count(); return(LEFT); }
+">"			{ count(); return(GT);}
+"<"			{ count(); return(LT):}
 "=="			{ count(); return(EQUAL_DOUBLE); }
 "<-"			{ count(); return(LEFT_ARROW); }
 ">-"			{ count(); return(RIGHT_ARROW); }
@@ -68,14 +52,25 @@ eofval }
 "="			{ count(); return(EQUAL); }
 "*"			{ count(); return(MUL); }
 "/"			{ count(); return(DIV); }
-"<="			{ count(); return(LT); }
-">="			{ count(); return(GT); }
+"<="			{ count(); return(LTE);}
+">="			{ count(); return(GTE);}
+
+ // ignore whitespace
+[ \r\t]+ { }
+
+ // ignore newlines
+\n       { }
+
+{"//".*\n} {\\ignore single line comments}
+
+{"##".*\n} {\\ignore single line comments}
+
 
 . {
-throw new Error("ERROR: " + yytext());
+throw new Error("ERROR" + yytext()); yyterminate();
 }
 
-%%
+%%s
  public static void main(String argv[]) throws IOException {
         Yylex yy = new Yylex(System.in);
         Yytoken t;
