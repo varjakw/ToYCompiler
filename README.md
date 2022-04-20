@@ -32,43 +32,16 @@ Lexical Analyser/Scanner for the ToY language. Returns ```VALID``` or ```ERROR``
 
 The lex analyser divides the program into tokens. A token is a sequence of characters that can be treated as a unit in the grammar of the language.
 
-Examples:
-- Type (id, number, real,...)
-- Punctuation tokens (If, void, return,...)
-- Alphabetic tokens (keywords)
-  
-    
-    
-- Keywords include for, while, if, etc 
-- Identifiers include variable names, function names, etc
-- Operators include +, -, etc
-- Seperators like ',' and ';'
-
 ## How Lexical Analysis Works
 - Tokenization: dividing the program into valid tokens
 - Remove white space
 - Remove comments
 - Identifies error using the grammar of the given languages.
 
-### Examples
-- Keywords
-  - ```else = 'e' 'l' 's' 'e'```
-  - Set of Keywords: ```'else' + 'if' + 'int' + ...```
-- Integers
-  - digit: ```'0' | '1' | ... | '9'```
-  - integers: ```digit digit* (or digit+) ```
-  - hexadecimal (starts with 0x or 0X): ```'0' | ('x' | 'X')hexdigit+``` where ```hexdigit = digit|'a'|'b'|'c'|'d'|'e'|'f'|'A'...|'F'```
-- Identifier
-  - letter: ```'a' | ... | 'z' | 'A' | ... | 'Z'```
-  - identifiers: ```letter (letter|digit)*```
-- Single-line comments
-  - //this is a comment
-  - ```('/' | '#')('/' | '#') not(\n)* (\n|epsilon)```
-
 We are representing the tokens using regular expressions.
 
 # Part 2 - Parser - Bison
-
+ The product of semantic parsing with bison is an AST.
 We deal with Context-Free Grammer (CFG) here in order to output an Abstract Syntax Tree (AST).
 
 ## Context-Free Grammar
